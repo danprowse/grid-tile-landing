@@ -1,4 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap");
+:root {
+  --bg-image-one: url('https://images.pexels.com/photos/15286/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+  --bg-image-two: url('https://images.pexels.com/photos/1287145/pexels-photo-1287145.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+}
 * {
   box-sizing: border-box;
   margin: 0;
@@ -50,4 +54,11 @@ p {
 }
 .container > div:nth-of-type(11) {
   grid-column: 2 / 4;
+}
+.bg1 {
+  background: var(--bg-image-one);
+}
+.bg2 {
+  background: var(--bg-image-two);
+  color: #000;
 }
