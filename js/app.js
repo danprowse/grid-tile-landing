@@ -26,3 +26,5 @@ reminderInput.addEventListener('blur', setReminder);
 CEM.getValue('name');
 CEM.getValue('focus');
 AM.getNovaraNews();
+AM.getGuardianNews();
+AM.getWeather();
