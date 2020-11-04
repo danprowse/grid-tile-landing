@@ -20,7 +20,7 @@ export default class ApiManager {
     .then(response => response.json())
     .then(data => {
       weatherObj.temp_c = data.current.temp_c;
-      weatherObj.feels_like_c = data.current.feelslike_c;
+      weatherObj.location = data.location.name;
       weatherObj.icon = data.current.condition.icon;
       console.log(weatherObj);
     });

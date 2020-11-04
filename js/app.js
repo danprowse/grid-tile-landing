@@ -5,7 +5,7 @@ const nameInput = document.querySelector('#name-input');
 const reminderInput = document.querySelector('#reminder-input');
 const weatherIcon = document.querySelector('.icon'); 
 const currentTemp = document.querySelector('.current-temp'); 
-const feelLikeTemp = document.querySelector('.feels-like-temp'); 
+const currentLocation = document.querySelector('.current-location'); 
 
 //manager classes
 const CEM = new ContentEditableManager(nameInput, reminderInput);
@@ -24,9 +24,8 @@ async function getWeather() {
     const weather = await AM.getWeather();
     //add to DOM
     weatherIcon.src = `${weather.icon}`;
-    currentTemp.innerHTML = `<p class="temp">${weather.temp_c}&#176;C</p>`
-    feelLikeTemp.innerHTML = `<p class="feels-temp">Feels like: ${weather.feels_like_c}&#176;C</p>`
-    // console.log(weather);
+    currentTemp.innerHTML = `<p class="temp">${weather.temp_c}&#176;C</p>`;
+    currentLocation.innerHTML = `<p class="location">${weather.location}</p>`;
 }
 
 nameInput.addEventListener('keypress', setName);
@@ -40,6 +39,6 @@ window.addEventListener('DOMContentLoaded', getWeather);
 //Run
 CEM.getValue('name');
 CEM.getValue('focus');
-AM.getNovaraNews();
-AM.getGuardianNews();
-AM.getWeather();
+// AM.getNovaraNews();
+// AM.getGuardianNews();
+// AM.getWeather();
