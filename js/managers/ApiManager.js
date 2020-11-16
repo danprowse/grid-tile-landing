@@ -1,17 +1,34 @@
+import { novaraTestData, guardianTestData } from '../test-data/testData.js';
 export default class ApiManager {
 
   async getNovaraNews() {
+    let info;
     const res = await fetch('http://localhost:5000/api/news-weather/novara')
-    .then(response => response.json());
-    console.log(res.posts)
-    return res.posts;
+    .then(response => response.json())
+    .then(data => {
+      info = data.posts;
+    })
+    .catch(err => {
+      console.log(err)
+      info = novaraTestData;
+    });
+    console.log(info)
+    return info;
   }
 
   async getGuardianNews() {
+    let info;
     const res = await fetch('http://localhost:5000/api/news-weather/guardian')
-    .then(response => response.json());
-    console.log(res.response.results);
-    return res.response.results;
+    .then(response => response.json())
+    .then(data => {
+      info = data.response.results;
+    })
+    .catch(err => {
+      console.log(err);
+      info = guardianTestData;
+    });
+    console.log(info);
+    return info;
   }
 
   async getWeather() {
@@ -23,14 +40,8 @@ export default class ApiManager {
       weatherObj.location = data.location.name;
       weatherObj.icon = data.current.condition.icon;
       console.log(weatherObj);
-    });
-    // const weatherObj = {
-    //   temp: res.current.temp_c,
-    //   feels_like: res.current.temp_c,
-    //   icon: res.current.condtion.icon
-    // }
-    // console.log(weatherObj);
+    })
+    .catch(err => console.log(err));
     return weatherObj;
   }
-
 }
