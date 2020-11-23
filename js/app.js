@@ -36,13 +36,15 @@ async function getNovaraNews() {
     let sumHeight = novaraNewsData.length * 100;
     novaraSlider.style.height = `${sumHeight}%`;
     novaraNewsData.forEach(el => {
+        let text = el.short_desc;
+        text = text.replace(/(<([^>]+)>)/gi, "");
         novaraSlider.innerHTML += `
         <section class="news-content">
             <div class="text-content">
                 <div class="content-container">
                     <p class="news-title">${el.title}</p>
                     <div class="news-desc">
-                        <p class="desc">${el.short_desc}</p>
+                        <p class="desc">${text}</p>
                     </div>
                     <div class="news-link-container">
                         <a href="${el.permalink}" class="link">
@@ -79,6 +81,28 @@ async function getGuardianNews() {
     });
 }
 
+/* 
+function does not work on its own due to transition issues
+only when removing it and altering transform can we reset 
+it before this gets called again 
+*/
+function nextNewsPost() {
+    setInterval(() => {
+        novaraSlider.style.transform = 'translateY(-10%)'
+        console.log('moving...')
+    }, 5000);
+}
+
+
+novaraSlider.addEventListener('transitionend', () => {
+    novaraSlider.appendChild(novaraSlider.firstElementChild)
+    novaraSlider.style.transition = 'none'
+    novaraSlider.style.transform = 'translate(0)'
+    setTimeout( () => {
+        novaraSlider.style.transition = 'ease-in-out 0.5s'
+    })
+})
+
 nameInput.addEventListener('keypress', setName);
 nameInput.addEventListener('blur', setName);
 reminderInput.addEventListener('keypress', setReminder);
@@ -88,6 +112,7 @@ reminderInput.addEventListener('blur', setReminder);
 window.addEventListener('DOMContentLoaded', getWeather);
 window.addEventListener('DOMContentLoaded', getNovaraNews);
 window.addEventListener('DOMContentLoaded', getGuardianNews);
+window.addEventListener('DOMContentLoaded', nextNewsPost)
 
 //Run
 CEM.getValue('name');
