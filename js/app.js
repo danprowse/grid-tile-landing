@@ -39,11 +39,21 @@ async function getNovaraNews() {
         novaraSlider.innerHTML += `
         <section class="news-content">
             <div class="text-content">
-                <p>${el.title}</p>
-                <p>${el.permalink}</p>
+                <div class="content-container">
+                    <p class="news-title">${el.title}</p>
+                    <div class="news-desc">
+                        <p class="desc">${el.short_desc}</p>
+                    </div>
+                    <div class="news-link-container">
+                        <a href="${el.permalink}" class="link">
+                            <i class="fas fa-external-link-square-alt icon"></i>
+                            full article
+                            </a>
+                    </div>
+                </div>
             </div>
-            <div>
-                <img src="${el.thumb_small}" />
+            <div class="news-img-container">
+                <img src="${el.thumb_small}" class="news-img"/>
             </div>
         </section>
         `       
