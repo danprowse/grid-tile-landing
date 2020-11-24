@@ -17,11 +17,13 @@ body {
   background: #333;
   color: #fff;
   font-family: 'Open Sans', sans-serif;
+  height: 100vh;
 }
 .container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 5px;
+  height: 100%;
 }
 h2 {
   font-size: 45px;
@@ -33,7 +35,7 @@ p {
 }
 .container > div {
   /* cursor: pointer; */
-  height: 210px;
+  min-height: 210px;
   background-size: cover;
   background-attachment: fixed;
   display: flex;
@@ -68,6 +70,12 @@ p {
   color: #000;
 }
 
+/* Reminder / Task editable */
+#reminder-input {
+  padding: 1rem;
+  font-size: 2rem;
+  background-color: rgba(238, 238, 238, .3);
+}
 /* Weather */
 .weather-grid-tile .weather-icon {
   /* flex: 1; */
@@ -113,7 +121,7 @@ p {
   justify-content: center;
   align-items: center;
   /* max-width: inherit; */
-  max-height: 205px;
+  min-height: 205px;
   margin: 2.5px;
 }
 
@@ -159,7 +167,7 @@ padding: 0.5rem;
 .news-title {
   margin: 0.25rem;
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   flex: 1;
 }
 .news-desc {
