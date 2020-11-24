@@ -47,7 +47,7 @@ async function getNovaraNews() {
                         <p class="desc">${text}</p>
                     </div>
                     <div class="news-link-container">
-                        <a href="${el.permalink}" class="link">
+                        <a href="${el.permalink}" target="_blank" class="link">
                             <i class="fas fa-external-link-square-alt icon"></i>
                             full article
                             </a>
@@ -70,27 +70,38 @@ async function getGuardianNews() {
         guardianSlider.innerHTML += `
         <section class="news-content">
             <div class="text-content">
-                <p>${el.sectionName}</p>
-                <p>${el.webTitle}</p>
-            </div>
-            <div>
-                <a href="${el.webUrl}">Click for full article.</p>
+                <div class="content-container">
+                    <p class="section-name">${el.sectionName}</p>
+                    <p class="news-title">${el.webTitle}</p>
+                    <div class="news-link-container">
+                        <a href="${el.webUrl}" target="_blank" class="link">
+                            <i class="fas fa-external-link-square-alt icon"></i>
+                            full article
+                        </a>
+                    </div>
+                </div>
             </div>
         </section>
         `       
     });
 }
-
 /* 
 function does not work on its own due to transition issues
 only when removing it and altering transform can we reset 
 it before this gets called again 
 */
-function nextNewsPost() {
+function novaraNextNewsPost() {
     setInterval(() => {
         novaraSlider.style.transform = 'translateY(-10%)'
         console.log('moving...')
-    }, 5000);
+    }, 7500);
+}
+
+function guardianNextNewsPost() {
+    setInterval(() => {
+        guardianSlider.style.transform = 'translateY(-10%)'
+        console.log('moving...')
+    }, 7500);
 }
 
 
@@ -99,7 +110,16 @@ novaraSlider.addEventListener('transitionend', () => {
     novaraSlider.style.transition = 'none'
     novaraSlider.style.transform = 'translate(0)'
     setTimeout( () => {
-        novaraSlider.style.transition = 'ease-in-out 0.5s'
+        novaraSlider.style.transition = 'ease-in-out 1s'
+    })
+})
+
+guardianSlider.addEventListener('transitionend', () => {
+    guardianSlider.appendChild(guardianSlider.firstElementChild)
+    guardianSlider.style.transition = 'none'
+    guardianSlider.style.transform = 'translate(0)'
+    setTimeout( () => {
+        guardianSlider.style.transition = 'ease-in-out 1s'
     })
 })
 
@@ -112,11 +132,9 @@ reminderInput.addEventListener('blur', setReminder);
 window.addEventListener('DOMContentLoaded', getWeather);
 window.addEventListener('DOMContentLoaded', getNovaraNews);
 window.addEventListener('DOMContentLoaded', getGuardianNews);
-window.addEventListener('DOMContentLoaded', nextNewsPost)
+window.addEventListener('DOMContentLoaded', novaraNextNewsPost)
+window.addEventListener('DOMContentLoaded', guardianNextNewsPost)
 
 //Run
 CEM.getValue('name');
 CEM.getValue('focus');
-// AM.getNovaraNews();
-// AM.getGuardianNews();
-// AM.getWeather();
