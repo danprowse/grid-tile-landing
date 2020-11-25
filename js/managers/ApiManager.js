@@ -17,6 +17,7 @@ export default class ApiManager {
 
   async getGuardianNews() {
     let info;
+
     const res = await fetch("http://localhost:5000/api/news-weather/guardian")
       .then((response) => response.json())
       .then((data) => {
@@ -32,15 +33,44 @@ export default class ApiManager {
 
   async getWeather() {
     const weatherObj = {};
-    const res = await fetch("http://localhost:5000/api/news-weather/weather")
-      .then((response) => response.json())
-      .then((data) => {
-        weatherObj.temp_c = data.current.temp_c;
-        weatherObj.location = data.location.name;
-        weatherObj.icon = data.current.condition.icon;
-        console.log(weatherObj);
-      })
-      .catch((err) => console.log(err));
+
+    if (!navigator.geolocation) {
+      console.log("Geolocation is not supported by your browser");
+    } else {
+      console.log("Locating…");
+      var getPosition = function (options) {
+        return new Promise(function (resolve, reject) {
+          navigator.geolocation.getCurrentPosition(resolve, reject, options);
+        });
+      };
+      await getPosition()
+        .then(async (position) => {
+          console.log(position);
+          let { longitude, latitude } = position.coords;
+          const res = await fetch(
+            "http://localhost:5000/api/news-weather/weather",
+            {
+              method: "POST",
+              headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ longitude, latitude }),
+            }
+          )
+            .then((response) => response.json())
+            .then((data) => {
+              weatherObj.temp_c = data.current.temp_c;
+              weatherObj.location = data.location.name;
+              weatherObj.icon = data.current.condition.icon;
+              console.log(weatherObj);
+            })
+            .catch((err) => console.log(err));
+        })
+        .catch((err) => {
+          console.error(err.message);
+        });
+    }
     return weatherObj;
   }
 }
