@@ -1,4 +1,4 @@
-import { novaraTestData, guardianTestData } from "../test-data/testData.js";
+import { novaraTestData, guardianTestData, weatherTestData } from "../test-data/testData.js";
 export default class ApiManager {
   async getNovaraNews() {
     let info;
@@ -13,7 +13,7 @@ export default class ApiManager {
       });
     console.log(info);
     return info;
-  }
+  } 
 
   async getGuardianNews() {
     let info;
@@ -32,7 +32,7 @@ export default class ApiManager {
   }
 
   async getWeather() {
-    const weatherObj = {};
+    let weatherObj = {};
 
     if (!navigator.geolocation) {
       console.log("Geolocation is not supported by your browser");
@@ -65,12 +65,15 @@ export default class ApiManager {
               weatherObj.icon = data.current.condition.icon;
               console.log(weatherObj);
             })
-            .catch((err) => console.log(err));
+            .catch((err) => {
+              console.log(err)
+            });
         })
         .catch((err) => {
           console.error(err.message);
         });
     }
-    return weatherObj;
+
+    return (Object.keys(weatherObj).length === 0 ? weatherTestData : weatherObj)
   }
 }

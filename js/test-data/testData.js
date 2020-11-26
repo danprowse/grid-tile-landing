@@ -69,4 +69,11 @@ const guardianTestData = [
   },
 ];
 
-export { novaraTestData, guardianTestData };
+const weatherTestData = 
+  {
+    temp_c: "12.8",
+    location: "London, UK",
+    icon: "#"
+  };
+
+export { novaraTestData, guardianTestData, weatherTestData };

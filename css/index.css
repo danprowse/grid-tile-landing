@@ -27,6 +27,8 @@ h2 {
   font-size: 45px;
   font-weight: 300;
   margin: 10px;
+  /* background-color: rgba(0, 0, 0, 0.3);
+  padding: 1rem; */
 }
 .container > div {
   /* cursor: pointer; */
@@ -40,6 +42,7 @@ h2 {
   justify-content: center;
   transition: all 0.75s ease-in;
   background-color: #6f6f6f;
+  text-align: center;
 }
 .container > div:hover:not(.news) {
   opacity: 0.9;
@@ -74,7 +77,6 @@ h2 {
 
 /* Weather */
 .weather-grid-tile .weather-icon {
-  /* flex: 1; */
   width: 100%;
 }
 .weather-grid-tile .weather-icon img {
@@ -82,12 +84,14 @@ h2 {
   min-height: 80px;
 }
 .current-temp .temp {
+  padding: 0.25rem;
   font-size: 2rem;
   color: #ccc;
 }
 .current-location .location {
   font-size: 0.9rem;
-  margin-bottom: 1rem;
+  margin-top: 1rem;
+  padding: 0.25rem;
 }
 
 /* news */
@@ -150,7 +154,6 @@ h2 {
   border: 2px solid #333;
   border-radius: 5px;
 }
-
 .novara-slider .text-content .content-container {
   flex: 1;
   height: 100%;
@@ -213,7 +216,9 @@ h2 {
 }
 
 /* Guardian styles */
-
+.guardian-slider .news-content, .guardian-slider .news-content .text-content {
+  width: 100%;
+}
 .guardian-slider .content-container {
   display: flex;
   flex-direction: column;
