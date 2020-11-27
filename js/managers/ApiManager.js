@@ -1,4 +1,8 @@
-import { novaraTestData, guardianTestData, weatherTestData } from "../test-data/testData.js";
+import {
+  novaraTestData,
+  guardianTestData,
+  weatherTestData,
+} from "../test-data/testData.js";
 export default class ApiManager {
   async getNovaraNews() {
     let info;
@@ -11,9 +15,9 @@ export default class ApiManager {
         console.log(err);
         info = novaraTestData;
       });
-    console.log(info);
+    // console.log(info);
     return info;
-  } 
+  }
 
   async getGuardianNews() {
     let info;
@@ -27,19 +31,20 @@ export default class ApiManager {
         console.log(err);
         info = guardianTestData;
       });
-    console.log(info);
+    // console.log(info);
     return info;
   }
 
   async getWeather() {
     let weatherObj = {};
 
+    // checking if location api is available
     if (!navigator.geolocation) {
-      console.log("Geolocation is not supported by your browser");
+      console.warn("Geolocation is not supported by your browser");
     } else {
       console.log("Locating…");
-      var getPosition = function (options) {
-        return new Promise(function (resolve, reject) {
+      const getPosition = (options) => {
+        return new Promise((resolve, reject) => {
           navigator.geolocation.getCurrentPosition(resolve, reject, options);
         });
       };
@@ -63,17 +68,15 @@ export default class ApiManager {
               weatherObj.temp_c = data.current.temp_c;
               weatherObj.location = data.location.name;
               weatherObj.icon = data.current.condition.icon;
-              console.log(weatherObj);
             })
             .catch((err) => {
-              console.log(err)
+              console.error(err);
             });
         })
         .catch((err) => {
           console.error(err.message);
         });
     }
-
-    return (Object.keys(weatherObj).length === 0 ? weatherTestData : weatherObj)
+    return Object.keys(weatherObj).length === 0 ? weatherTestData : weatherObj;
   }
 }

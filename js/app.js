@@ -1,5 +1,6 @@
 import ContentEditableManager from "./managers/ContentEditableManager.js";
 import ApiManager from "./managers/ApiManager.js";
+
 //DOM Elements
 const nameInput = document.querySelector("#name-input");
 const reminderInput = document.querySelector("#reminder-input");
@@ -25,9 +26,7 @@ function setReminder(e) {
 }
 
 async function getWeather() {
-  //get response
   const weather = await AM.getWeather();
-  //add to DOM
   weatherIcon.src = `${weather.icon}`;
   currentTemp.innerHTML = `<p class="temp">${weather.temp_c}&#176;C</p>`;
   currentLocation.innerHTML = `<p class="location">${weather.location}</p>`;
@@ -35,12 +34,14 @@ async function getWeather() {
 
 async function getNovaraNews() {
   const novaraNewsData = await AM.getNovaraNews();
-  //loop through and foreach create div with content and add to section.
-  let sumHeight = novaraNewsData.length * 100;
+  let heightOfSlider = novaraNewsData.length * 100;
   novaraNewsTransition = 100 / novaraNewsData.length;
-  novaraSlider.style.height = `${sumHeight}%`;
+  novaraSlider.style.height = `${heightOfSlider}%`;
+  
+  //loop through and foreach create div with content and add to section.
   novaraNewsData.forEach((el) => {
     let text = el.short_desc;
+    // removing html tags
     text = text.replace(/(<([^>]+)>)/gi, "");
     novaraSlider.innerHTML += `
         <section class="news-content">
@@ -68,9 +69,10 @@ async function getNovaraNews() {
 
 async function getGuardianNews() {
   const guardianNewsData = await AM.getGuardianNews();
-  let sumHeight = guardianNewsData.length * 100;
+  let heightOfSlider = guardianNewsData.length * 100;
   guardianNewsTransition = 100 / guardianNewsData.length;
-  guardianSlider.style.height = `${sumHeight}%`;
+  guardianSlider.style.height = `${heightOfSlider}%`;
+
   guardianNewsData.forEach((el) => {
     guardianSlider.innerHTML += `
         <section class="news-content">
@@ -109,23 +111,18 @@ function guardianNextNewsPost() {
   }, 5000);
 }
 
-novaraSlider.addEventListener("transitionend", () => {
-  novaraSlider.appendChild(novaraSlider.firstElementChild);
-  novaraSlider.style.transition = "none";
-  novaraSlider.style.transform = "translate(0)";
+function handleTransition(slider) {
+  slider.appendChild(slider.firstElementChild);
+  slider.style.transition = "none";
+  slider.style.transform = "translate(0)";
   setTimeout(() => {
-    novaraSlider.style.transition = "all ease-in-out .75s";
+    slider.style.transition = "all ease-in-out .75s";
   });
-});
+}
 
-guardianSlider.addEventListener("transitionend", () => {
-  guardianSlider.appendChild(guardianSlider.firstElementChild);
-  guardianSlider.style.transition = "none";
-  guardianSlider.style.transform = "translate(0)";
-  setTimeout(() => {
-    guardianSlider.style.transition = "all ease-in-out .75s";
-  });
-});
+novaraSlider.addEventListener("transitionend", () => handleTransition(novaraSlider));
+guardianSlider.addEventListener("transitionend", () => handleTransition(guardianSlider));
+
 
 nameInput.addEventListener("keypress", setName);
 nameInput.addEventListener("blur", setName);
