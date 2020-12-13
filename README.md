@@ -1,4 +1,8 @@
 # Grid Styled Landing Page
+
+Checkout the live version at: 
+> https://arcane-reef-78830.herokuapp.com/
+
 A personal side project where i've created a landing page using HTML, CSS and Javascript. 
 
 Within the page the user has grid tiles that allow a welcome message and a reminder or a todo message to be set. Two grid tiles display rotating news content and one tile outputs the users current weather information.
