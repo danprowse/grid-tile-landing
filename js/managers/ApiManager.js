@@ -3,10 +3,13 @@ import {
   guardianTestData,
   weatherTestData,
 } from "../test-data/testData.js";
+
+const route = 'https://fathomless-shelf-33526.herokuapp.com';
+
 export default class ApiManager {
   async getNovaraNews() {
     let info;
-    const res = await fetch("http://localhost:5000/api/news-weather/novara")
+    const res = await fetch(`${route}/api/news-weather/novara`)
       .then((response) => response.json())
       .then((data) => {
         info = data.posts;
@@ -22,7 +25,7 @@ export default class ApiManager {
   async getGuardianNews() {
     let info;
 
-    const res = await fetch("http://localhost:5000/api/news-weather/guardian")
+    const res = await fetch(`${route}/api/news-weather/guardian`)
       .then((response) => response.json())
       .then((data) => {
         info = data.response.results;
@@ -53,7 +56,7 @@ export default class ApiManager {
           console.log(position);
           let { longitude, latitude } = position.coords;
           const res = await fetch(
-            "http://localhost:5000/api/news-weather/weather",
+            `${route}/api/news-weather/weather`,
             {
               method: "POST",
               headers: {
