@@ -1,0 +1,19 @@
+{
+  "name": "grid-tile-frontend",
+  "version": "1.0.0",
+  "description": "landing page styled using css grid displaying news and weather",
+  "main": "index.php",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danprowse/grid-tile-landing.git"
+  },
+  "author": "Dan Prowsse",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/danprowse/grid-tile-landing/issues"
+  },
+  "homepage": "https://github.com/danprowse/grid-tile-landing#readme"
+}
