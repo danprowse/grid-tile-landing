@@ -5,12 +5,15 @@ export default class ContentEditableManager {
     this.reminderInputElement = reminder;
   }
 
+  getName() {
+    return this.nameInputElement;
+  }
   setValue(value, e) {    
     if (e.type === 'keypress') {
       //make sure keypress is enter
       if (e.which == 13 || e.keyCode == 13) {
           if(value === 'name') {
-            localStorage.setItem(value, this.nameInputElement.innerText);
+            localStorage.setItem(value, this.getName().innerText);
             this.#nameInputElement.blur();
           } else {
             localStorage.setItem(value, this.reminderInputElement.innerText);
