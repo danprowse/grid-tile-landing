@@ -10,18 +10,18 @@ export default class ContentEditableManager {
       //make sure keypress is enter
       if (e.which == 13 || e.keyCode == 13) {
           if(value === 'name') {
-            localStorage.setItem(value, this.#nameInputElement.innerText);
+            localStorage.setItem(value, this.nameInputElement.innerText);
             this.#nameInputElement.blur();
           } else {
-            localStorage.setItem(value, this.#reminderInputElement.innerText);
+            localStorage.setItem(value, this.reminderInputElement.innerText);
             this.#reminderInputElement.blur();
           }
       }
     } else {
       if(value === 'name') {
-        localStorage.setItem(value, this.#nameInputElement.innerText);
+        localStorage.setItem(value, this.nameInputElement.innerText);
       } else {
-        localStorage.setItem(value, this.#reminderInputElement.innerText);
+        localStorage.setItem(value, this.reminderInputElement.innerText);
       }
     }
   }
