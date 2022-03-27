@@ -1,5 +1,8 @@
 export default class ContentEditableManager {
   
+  #nameInputElement;
+  #reminderInputElement;
+  
   constructor(name, reminder) {
     this.nameInputElement = name;
     this.reminderInputElement = reminder;
