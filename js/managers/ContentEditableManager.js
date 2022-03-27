@@ -1,5 +1,4 @@
 export default class ContentEditableManager {
-
   constructor(name, reminder) {
     this.nameInputElement = name;
     this.reminderInputElement = reminder;
@@ -27,18 +26,18 @@ export default class ContentEditableManager {
   }
 
   getValue(value) {
-    if (localStorage.getItem(value) === null) {
-      if (value === "name") {
+    if(localStorage.getItem(value) === null) {
+      if(value === 'name') {
         this.nameInputElement.textContent = `[Enter ${value}]`;
       } else {
         this.reminderInputElement.textContent = `[Enter ${value}]`;
       }
     } else {
-      if (value === "name") {
-        this.nameInputElement.textContent = localStorage.getItem(value);
-      } else {
-        this.reminderInputElement.textContent = localStorage.getItem(value);
-      }
+        if(value === 'name') {
+          this.nameInputElement.textContent = localStorage.getItem(value);;
+        } else {
+          this.reminderInputElement.textContent = localStorage.getItem(value);;
+        }
     }
   }
 }
