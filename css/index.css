@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap');
+
 /* Reminder / Task editable */
 #reminder-input {
   padding: 1rem;
@@ -106,6 +108,7 @@
   font-size: 1.1rem;
   flex: 1;
   letter-spacing: normal;
+  font-weight: 400;
 }
 .news-desc {
   max-height: 100px;
@@ -169,11 +172,15 @@
 }
 .guardian-slider .news-title {
   margin: 0.25rem;
-  font-size: 0.9rem;
-}
-.guardian-slider .section-name {
-  font-size: 1.1rem;
   font-weight: 600;
+  font-size: 1.25rem;
+  flex: 1;
+  letter-spacing: normal;
+  font-weight: 400;
+}
+.guardian-slider .content-container .desc {
+  font-size: 0.9rem;
+  font-weight: 300 !important;
 }
 .guardian-slider .news-link-container,
 .guardian-slider .news-title,

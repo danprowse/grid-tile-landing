@@ -80,8 +80,8 @@ async function getGuardianNews() {
         <section class="news-content">
             <div class="text-content">
                 <div class="content-container">
-                    <p class="section-name">${el.sectionName}</p>
-                    <p class="news-title">${el.webTitle}</p>
+                    <p class="news-title">${el.sectionName}</p>
+                    <p class="desc">${el.webTitle}</p>
                     <div class="news-link-container">
                         <a href="${el.webUrl}" target="_blank" class="link">
                             <i class="fas fa-external-link-square-alt icon"></i>

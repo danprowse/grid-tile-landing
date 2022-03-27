@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@300;400&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap');
 :root {
   --bg-image-one: url("https://images.pexels.com/photos/15286/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
   --bg-image-two: url("https://images.pexels.com/photos/1287145/pexels-photo-1287145.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
@@ -10,11 +10,12 @@
 }
 html {
   font-size: 18px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
 }
 body {
   background: #333;
   color: #fff;
-  font-family: "Open Sans", sans-serif;
   height: 100vh;
   letter-spacing: 1.07px
 }
