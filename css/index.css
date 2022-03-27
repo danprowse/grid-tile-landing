@@ -91,7 +91,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 0.2rem;
+  padding: 0.25rem;
   background-color: rgba(238, 238, 238, 0.5);
 }
 .novara-slider .news-link,
@@ -105,16 +105,23 @@
   font-weight: 600;
   font-size: 1.1rem;
   flex: 1;
+  letter-spacing: normal;
 }
 .news-desc {
   max-height: 100px;
   overflow: hidden;
   flex: 3;
   padding: 0.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.news-desc .desc {
+.news-desc div .desc {
   font-size: 0.75rem;
-  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
 }
 .novara-slider .news-link-container {
   flex: 1;

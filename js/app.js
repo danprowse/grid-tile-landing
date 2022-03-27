@@ -49,7 +49,9 @@ async function getNovaraNews() {
                 <div class="content-container">
                     <p class="news-title">${el.title}</p>
                     <div class="news-desc">
+                      <div>
                         <p class="desc">${text}</p>
+                      </div>
                     </div>
                     <div class="news-link-container">
                         <a href="${el.permalink}" target="_blank" class="link">
