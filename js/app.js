@@ -22,7 +22,7 @@ function setName(e) {
 }
 
 function setReminder(e) {
-  CEM.setValue("focus", e);
+  CEM.setValue("todo", e);
 }
 
 async function getWeather() {
